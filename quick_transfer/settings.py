@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -133,3 +133,11 @@ REST_FRAMEWORK = {
 }
 handler500 = 'rest_framework.exceptions.server_error'
 handler400 = 'rest_framework.exceptions.bad_request'
+#.env
+env = environ.Env()
+environ.Env.read_env()
+EMAIL_HOST = env('SMTP_HOST')
+EMAIL_PORT = env('SMTP_PORT')
+EMAIL_HOST_USER = env('SMTP_USER')
+EMAIL_HOST_PASSWORD = env('SMTP_PASS')
+EMAIL_USE_SSL = True

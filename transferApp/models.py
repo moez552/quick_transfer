@@ -6,6 +6,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save, pre_save,post_delete
+from .utils import send_account_verification
 # Create your models here.
 class EmailVerification(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -20,6 +21,7 @@ class Profile(models.Model):
     verified =models.BooleanField(default=False)
     balance = models.FloatField()
     max_withdraw= models.FloatField()
+    created_date = models.DateTimeField(default=now,editable=False)
     def __str__(self):
         return self.user.first_name + ' '+self.user.last_name
     
@@ -29,6 +31,7 @@ def create_user_profile(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance,balance=0,max_withdraw=200)
         key = ''.join(str(i) for i in random.sample(range(1, 10), 8))
         EmailVerification.objects.create(user=instance,key=key)
+        send_account_verification(key,instance.first_name,instance.email)
 class History(models.Model):
     TRANSACTIONS_TYPES = [
         ('DP', 'Deposit'),
@@ -45,6 +48,8 @@ class History(models.Model):
     created_date = models.DateTimeField(default=now, editable=False)
     status = models.CharField(choices = STATUS_CHOICES,max_length=10,default=STATUS_CHOICES[1])
     def save(self, *args, **kwargs):
+        if not self.profile.verified:
+            raise ValidationError(_('Account is not verified'),code=4)
         if self.transaction_type=='TR' and not self.receiver:
             raise ValidationError(_('Receiver must be specified'),code=3)
         if self.profile==self.receiver:

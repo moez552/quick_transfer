@@ -2,3 +2,4 @@
 ./db.sqllite3
 /*/__pycache__
 /*/migrations
+*/.env
