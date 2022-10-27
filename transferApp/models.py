@@ -93,7 +93,7 @@ class History(models.Model):
         super(History, self).save(*args, **kwargs)
     def __str__(self):
         if self.profile:
-            return str(self.status)+' '+str(self.transaction_type)+' of  '+str(self.amount)+' '+self.profile.user.first_name + ' '+self.profile.user.last_name
+            return str(self.status)+' '+str(self.transaction_type)+' of  '+str(self.amount)+' '+self.profile.first_name + ' '+self.profile.last_name
         else:
             return 'unknown'
 
