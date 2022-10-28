@@ -1,14 +1,48 @@
-a simple API that allows you to create account, view users, view your profile, transfer, desposite and withdraw money
-endpoints:
+# Quick_transfer
 
-/register : register
+This is a Banking API I created as a part technical interview.
 
-/api/token : get token
+## Features
+<li> Create new account and get a verification email.
+<li> Transfer  money from one account to another.
+<li> Consult transfers history
+<li> Consult Profile
+<li> Consult all users
 
-/api/token/refresh/ : refresh token
 
-/profile : your profile
 
-/users ; list of users
+## Prerequisites
+1. A Terminal (preferred) or a CMD
+2. Python 3
+3. Django framework
 
-/history : your transactions history
+more details about version in the requirements.txt file
+
+## Installation
+1. Open a Terminal, and clone the current repository.
+    ```
+    git clone https://github.com/moez552/quick_transfer.git
+    ```
+2. Enter the root directory.
+    ```
+    cd quick_transfer
+    ```
+
+3. Now start the setup by entering the following command.
+    ```
+    python manage.py runserver
+    ```
+    If that didn't work, try replacing `python` by `python3` in the above command.
+
+### endpoints: 
+1. /register : register a new user
+
+2. /api/token : get authentication token
+
+3. /api/token/refresh/ : refresh token
+
+4. /profile : your profile
+
+5. /users ; list of users
+
+6. /history : your transactions history
