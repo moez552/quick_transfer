@@ -35,14 +35,9 @@ more details about version in the requirements.txt file
     If that didn't work, try replacing `python` by `python3` in the above command.
 
 ### endpoints: 
-1. /register : register a new user
-
-2. /api/token : get authentication token
-
-3. /api/token/refresh/ : refresh token
-
-4. /profile : your profile
-
-5. /users ; list of users
-
-6. /history : your transactions history
+<li> /register : register a new user
+<li> /api/token : get authentication token
+<li> /api/token/refresh/ : refresh token
+<li> /profile : your profile
+<li> /users ; list of users
+<li> /history : your transactions history
