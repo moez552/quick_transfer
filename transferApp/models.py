@@ -29,8 +29,7 @@ class Profile(AbstractUser):
     verified =models.BooleanField(default=False)
     balance = models.FloatField(default=0)
     max_withdraw= models.FloatField(default=200)
-    created_date = models.DateTimeField(default=now,editable=False)
-
+    
     objects = CustomUserManager()
 
     def __str__(self):
