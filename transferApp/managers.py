@@ -21,7 +21,6 @@ class CustomUserManager(BaseUserManager):
             raise ValidationError(_('The profile_type must be set'))
         if not extra_fields.get('business_name') and extra_fields.get('profile_type')=='BS':
             raise ValidationError(_('The business_name must be set'))
-        print(extra_fields.get('first_name'))
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)

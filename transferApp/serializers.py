@@ -6,9 +6,10 @@ class HistorySerializer(serializers.ModelSerializer):
         model = History
         fields = ('transaction_type', 'amount','created_date','status','receiver')
     def to_representation(self, instance):
+        ret = super().to_representation(instance)
         if instance.transaction_type != 'TR':
-            self.fields.pop('receiver')
-        return super().to_representation(instance)
+            ret.pop('receiver')
+        return ret
     def create(self, validated_data):
         try:
             user =  self.context['request'].user
@@ -40,17 +41,19 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ('balance', 'max_withdraw','email','username','first_name','last_name','verified','profile_type','business_name')
     def to_representation(self, instance):
+        ret = super().to_representation(instance)
         if instance.profile_type == 'PL':
-            self.fields.pop('business_name')
-        return super().to_representation(instance)
+            ret.pop('business_name')
+        return ret
 class OuterProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ('username','first_name','last_name','profile_type','business_name')
     def to_representation(self, instance):
+        ret = super().to_representation(instance)
         if instance.profile_type == 'PL':
-            self.fields.pop('business_name')
-        return super().to_representation(instance)
+            ret.pop('business_name')
+        return ret
 
             
 class CreateProfileSerializer(serializers.ModelSerializer):
