@@ -1,6 +1,6 @@
 /venv
-./db.sqllite3
+db.sqllite3
 /*/__pycache__
-/*/*/__pycache__
+/*/tests/__pycache__
 /*/migrations
 */.env
