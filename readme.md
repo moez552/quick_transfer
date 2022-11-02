@@ -1,6 +1,6 @@
 # Quick_transfer
 
-This is a Banking API I created as a part technical interview.
+This is a Banking API I created as a part of a technical interview.
 
 ## Features
 <li> Create new account and get a verification email.
@@ -14,7 +14,10 @@ This is a Banking API I created as a part technical interview.
 ## Prerequisites
 1. A Terminal (preferred) or a CMD
 2. Python 3
-3. Django framework
+3. Django
+4. django-environ
+5. djangorestframework
+6. djangorestframework-simplejwt
 
 more details about version in the requirements.txt file
 
@@ -33,6 +36,13 @@ more details about version in the requirements.txt file
     python manage.py runserver
     ```
     If that didn't work, try replacing `python` by `python3` in the above command.
+    
+   you may incounter migrations errors I suggest you run:
+       ```
+     python manage.py makemigrations
+     python manage.py migrate
+    ```
+  
 
 ### endpoints: 
 <li> /register : register a new user
