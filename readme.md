@@ -41,7 +41,7 @@ more details about version in the requirements.txt file
        ```
      python manage.py makemigrations
      python manage.py migrate
-    ```
+       ```
   
 
 ### endpoints: 
